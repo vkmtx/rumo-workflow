@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Manifests are valid JSON
         run: jq empty .claude-plugin/plugin.json .claude-plugin/marketplace.json
