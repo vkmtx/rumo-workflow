@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Manifests are valid JSON
+        run: jq empty .claude-plugin/plugin.json .claude-plugin/marketplace.json
+
+      - name: Leak scan (generic rules)
+        run: bash scripts/leak-scan.sh
+
+      - name: Tests
+        run: bash scripts/test-all.sh

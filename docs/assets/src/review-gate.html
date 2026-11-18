@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="diagram.css">
+<style>
+:root{--w:1600px;--h:700px}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.t{position:relative;padding:22px 24px 24px}
+.t .lv{display:flex;gap:6px;margin-bottom:14px}
+.t .lv i{width:34px;height:8px;border-radius:4px;background:var(--paper-2)}
+.t .lv i.on{background:var(--petrol)}
+.t h3{font-size:28px;letter-spacing:-.02em}
+.t .when{margin-top:8px;font-size:16px;color:var(--ink-2);line-height:1.45;min-height:70px}
+.axes{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.axes .par{color:var(--muted);font-size:19px;font-weight:500}
+.flow{margin-top:34px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch}
+.step{position:relative;padding:18px 22px 18px 20px;background:var(--card);border:1px solid var(--line);border-right:none}
+.step:first-child{border-radius:14px 0 0 14px}
+.step:last-child{border-radius:0 14px 14px 0;border-right:1px solid var(--line);background:var(--petrol);color:var(--paper);border-color:var(--petrol)}
+body.dark .step:last-child{color:#121110}
+.step .n{font-family:'Geist Mono',monospace;font-size:12.5px;color:var(--muted)}
+.step:last-child .n{color:inherit;opacity:.75}
+.step b{display:block;font-size:19px;margin:4px 0 4px;letter-spacing:-.01em}
+.step span{font-size:14.5px;line-height:1.4;color:var(--ink-2);display:block}
+.step:last-child span{color:inherit;opacity:.85}
+.lbl{font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted);margin:30px 0 0}
+</style></head><body><div class="chart"></div><div class="vignette"></div>
+<div class="page">
+<div class="hd"><span class="mk"></span><h1>The review gate</h1><p>Tiered by diff size and risk. Clean-context reviewers, fixed SHAs, a stamp tied to HEAD.</p></div>
+<div class="tiers">
+  <div class="card t"><div class="lv"><i class="on"></i><i></i><i></i></div><h3>light</h3><p class="when">Under 50 changed lines, no sensitive risk, no change to an agent definition or SKILL.md frontmatter.</p><div class="axes"><span class="chip p">bugs</span><span class="par">then</span><span class="chip">spec inline</span></div></div>
+  <div class="card t"><div class="lv"><i class="on"></i><i class="on"></i><i></i></div><h3>standard</h3><p class="when">Everything else.</p><div class="axes"><span class="chip p">bugs</span><span class="par">∥</span><span class="chip p">standards</span><span class="par">∥</span><span class="chip p">spec</span></div></div>
+  <div class="card t" style="border-color:color-mix(in srgb,var(--accent) 45%,var(--line))"><div class="lv"><i class="on"></i><i class="on"></i><i class="on" style="background:var(--accent)"></i></div><h3>sensitive</h3><p class="when">Label <code>risk:sensitive</code>, a plan step with Risk ≠ none, or the path scan hits (auth, migrations, secrets, payments, CI…).</p><div class="axes"><span class="chip">standard</span><span class="par">∥</span><span class="chip a">security</span></div></div>
+</div>
+<div class="lbl">every finding, every tier</div>
+<div class="flow">
+  <div class="step"><div class="n">01</div><b>Review</b><span>Each axis a separate <code>rumo:reviewer</code> run, in parallel</span></div>
+  <div class="step"><div class="n">02</div><b>Replay</b><span>Every proof re-run before any fix is written</span></div>
+  <div class="step"><div class="n">03</div><b>Fix</b><span>Blockers and majors fixed — or waived by the owner, logged</span></div>
+  <div class="step"><div class="n">04</div><b>Fix re-review</b><span>A fresh reviewer marks each finding RESOLVED or WITHDRAWN</span></div>
+  <div class="step"><div class="n">05</div><b>Stamp</b><span>Written for the current HEAD; PR and merge gates read it</span></div>
+</div>
+</div>
+<div class="foot"><span>minors and questions still open at PR time → one follow-up issue, linked both ways</span><span>skills/review</span></div>
+<script src="common.js"></script></body></html>

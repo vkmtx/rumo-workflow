@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="diagram.css">
+<style>
+:root{--w:1600px;--h:860px}
+.route{position:relative;height:96px;margin:0 0 0}
+.route svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cols{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.st{font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted);margin-bottom:6px}
+.cmd{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.card.gate{border-color:color-mix(in srgb,var(--petrol) 45%,var(--line))}
+.card.gate h3{color:var(--petrol)}
+.side{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:22px}
+.side .card{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start;grid-template-rows:auto 1fr}
+.side .card .chip{grid-row:span 2;margin-top:2px}
+.side .card p{grid-column:2}
+.lbl{font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted);margin:26px 0 10px}
+</style></head><body><div class="chart"></div><div class="vignette"></div>
+<div class="page">
+  <div class="hd"><span class="mk"></span><h1>The route</h1><p>One flow verb, idea → merged PR. Each mode is a reference file the session reads before acting.</p></div>
+  <div class="route"><svg viewBox="0 0 1472 96" preserveAspectRatio="none">
+    <path d="M115 48 H1357" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M1357 62 C1357 96 115 96 115 62" stroke="var(--petrol)" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round" fill="none"/>
+    <g fill="var(--paper)" stroke="var(--ink)" stroke-width="3">
+      <circle cx="115" cy="48" r="11"/><circle cx="363" cy="48" r="11"/><circle cx="611" cy="48" r="11"/>
+      <circle cx="1109" cy="48" r="11"/>
+    </g>
+    <rect x="848" y="37" width="22" height="22" rx="6" fill="var(--petrol)"/>
+    <circle cx="1357" cy="48" r="15" fill="var(--accent)"/><circle cx="1357" cy="48" r="5" fill="var(--paper)"/>
+  </svg></div>
+  <div class="cols">
+    <div class="card"><div class="st">T0 → aligned</div><h3>align</h3><ul><li>Interview by the <code>grilling</code> skill</li><li>Terms and decisions land in <code>CONTEXT.md</code> and ADRs as they resolve</li><li>Ends when a T1 can be published</li></ul><div class="cmd"><span class="chip a">/rumo &lt;idea&gt;</span></div></div>
+    <div class="card"><div class="st">T1</div><h3>ticket</h3><ul><li>A tracer-bullet GitHub issue</li><li>Native sub-issues and blocking links</li><li>Labels from the repo's own vocabulary</li></ul><div class="cmd"><span class="chip a">/rumo ticket</span></div></div>
+    <div class="card"><div class="st">T2 · worktree</div><h3>build</h3><ul><li>Planner writes typed steps to <code>.rumo/plan.md</code></li><li>Builders run in waves, ≤&nbsp;5 at once</li><li>Each step accepted by command, not by claim</li><li>Stops only on a critical question</li></ul><div class="cmd"><span class="chip a">/rumo build #N</span></div></div>
+    <div class="card gate"><div class="st">gate</div><h3>review</h3><ul><li>Tier by diff size and risk</li><li>bugs ∥ standards ∥ spec (+ security)</li><li>Proofs replayed before any fix</li><li>Stamp tied to HEAD</li></ul><div class="cmd"><span class="chip p">review</span></div></div>
+    <div class="card"><div class="st">PR</div><h3>ship</h3><ul><li>PR closes its issue</li><li>Assumptions copied into the PR body</li><li>Open minors go to one follow-up issue</li></ul><div class="cmd"><span class="chip">NEXT: clear</span></div></div>
+    <div class="card"><div class="st">loop</div><h3>learn</h3><ul><li>Revise, escalate, replan and findings logged as events</li><li>Repeats become rules in agents, skills, hooks</li></ul><div class="cmd"><span class="chip p">/learn</span></div></div>
+  </div>
+  <div class="lbl">also on the route</div>
+  <div class="side">
+    <div class="card"><span class="chip a">/rumo wave</span><h3>Several issues at once</h3><p>One worktree and one build session per issue, across local and remote hosts, with concurrency caps and a memory watch.</p></div>
+    <div class="card"><span class="chip a">/rumo map</span><h3>Fog too big for a session</h3><p>A shared map of decision tickets, resolved one at a time, then handed to <code>ticket</code>.</p></div>
+    <div class="card"><span class="chip a">/rumo handoff</span><h3>Portable continuation</h3><p>A doc that carries the work to a new harness, directory, colleague or prototype detour.</p></div>
+  </div>
+</div>
+<div class="foot"><span>every orchestrator turn ends with a literal NEXT: line — clear · keep-open until X · rewind to Y</span><span>rumo</span></div>
+<script src="common.js"></script></body></html>

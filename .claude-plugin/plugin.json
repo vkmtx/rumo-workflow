@@ -1,0 +1,24 @@
+{
+  "name": "rumo",
+  "version": "0.13.0",
+  "description": "An idea-to-merged-PR workflow for Claude Code: one command (/rumo) aligns, tickets and builds, with the main session orchestrating typed subagents (haiku scouts, opus planner and reviewers, sonnet/opus builders), a tiered review gate before every PR, /learn to turn repeated mistakes into rules, and 10 discipline skills. Uses GitHub issues through the gh CLI.",
+  "author": {
+    "name": "vkmtx"
+  },
+  "skills": [
+    "./skills/rumo",
+    "./skills/review",
+    "./skills/setup-repo",
+    "./skills/learn",
+    "./skills/discipline/grilling",
+    "./skills/discipline/tdd",
+    "./skills/discipline/diagnosing-bugs",
+    "./skills/discipline/prototype",
+    "./skills/discipline/research",
+    "./skills/discipline/domain-modeling",
+    "./skills/discipline/codebase-design",
+    "./skills/discipline/resolving-merge-conflicts",
+    "./skills/discipline/wizard",
+    "./skills/discipline/writing-for-agents"
+  ]
+}

@@ -1,0 +1,23 @@
+@import url('base.css');
+.page{position:absolute;inset:0;padding:56px 64px}
+.hd{display:flex;align-items:baseline;gap:18px;margin-bottom:34px}
+.hd svg{width:34px;height:34px;align-self:center}
+.hd h1{font-size:40px;font-weight:700;letter-spacing:-.03em}
+.hd p{font-size:19px;color:var(--ink-2);margin-left:auto;font-weight:500}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 1px 0 rgba(18,17,16,.04),0 10px 24px -18px rgba(18,17,16,.25)}
+body.dark .card{box-shadow:none}
+.card h3{font-size:21px;font-weight:700;letter-spacing:-.015em}
+.card .k{font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted)}
+.card p,.card li{font-size:15.5px;line-height:1.42;color:var(--ink-2)}
+.card ul{list-style:none;margin-top:10px;display:grid;gap:6px}
+.card li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:2px;background:var(--line);margin:0 10px 2px 0}
+code,.code{font-family:'Geist Mono',monospace;font-size:.88em;background:var(--paper-2);padding:1px 6px;border-radius:6px;color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:'Geist Mono',monospace;font-size:13.5px;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink-2);white-space:nowrap}
+.chip.a{background:var(--accent-soft);border-color:transparent;color:var(--ink)}
+.chip.p{background:var(--petrol-soft);border-color:transparent;color:var(--ink)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.haiku{--m:#8a8172}.sonnet{--m:var(--petrol)}.opus{--m:var(--accent)}
+.model{font-family:'Geist Mono',monospace;font-size:13px;font-weight:600;color:var(--m);display:inline-flex;align-items:center;gap:7px}
+.model::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--m)}
+svg.wire{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.foot{position:absolute;left:64px;right:64px;bottom:30px;display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted)}

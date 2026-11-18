@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a change to the workflow, a new skill, agent, hook or script.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What is hard or impossible today, and how often does it come up?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What you would like rumo to do. Say which command or skill it touches.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Fit
+      options:
+        - label: I read `CLAUDE.md` and this does not conflict with its maintenance rules.
+          required: true

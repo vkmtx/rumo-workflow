@@ -1,0 +1,1 @@
+rumo is released under the [MIT license](https://github.com/vkmtx/rumo-workflow/blob/main/LICENSE) · [Repository](https://github.com/vkmtx/rumo-workflow) · [Changelog](https://github.com/vkmtx/rumo-workflow/blob/main/CHANGELOG.md)

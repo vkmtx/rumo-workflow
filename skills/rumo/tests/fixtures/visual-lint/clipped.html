@@ -1,0 +1,12 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html { overflow-x: visible } body { overflow-x: clip; margin: 0; font: 16px sans-serif }
+.ell { width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.clamp { width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+.scroller { width: 160px; white-space: nowrap; overflow-x: auto }</style>
+<h1>Clipped page</h1>
+<div class="wide" style="width:600px;height:20px;background:#ccc"></div>
+<p id="ell" class="ell">Quarterly revenue by region and channel</p>
+<p id="clamp" class="clamp">This paragraph is clamped to two lines, so everything after the second line is cut off without any way for the reader to reach the rest of it.</p>
+<p id="titled" class="ell" title="Quarterly revenue by region and segment">Quarterly revenue by region and segment</p>
+<div id="scroller" class="scroller">Quarterly revenue by region and product</div>

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/vkmtx/rumo-workflow/discussions
+    about: Ask how something works or float an idea before filing an issue.
+  - name: Documentation
+    url: https://github.com/vkmtx/rumo-workflow/wiki
+    about: Guides and design notes.
+  - name: Report a security issue
+    url: https://github.com/vkmtx/rumo-workflow/security/advisories/new
+    about: Private reporting for vulnerabilities, including hook or gate bypasses.

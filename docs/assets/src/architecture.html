@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="diagram.css">
+<style>
+:root{--w:1600px;--h:960px}
+.b{position:absolute}
+.card h3{margin-bottom:4px}
+.orch{border:1.5px solid var(--ink);}
+.orch .row{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:14px}
+.orch .row div{font-size:15.5px;color:var(--ink-2);line-height:1.4}
+.orch .row b{display:block;font-family:'Geist Mono',monospace;font-size:12.5px;font-weight:500;color:var(--muted);margin-bottom:3px}
+.cmds{display:flex;flex-direction:column;gap:8px;margin-top:14px;align-items:flex-start}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+.tier{border-radius:10px;background:var(--paper);padding:12px 14px;border:1px solid var(--line)}
+.tier .model{margin-bottom:8px}
+.tier div.n{font-family:'Geist Mono',monospace;font-size:14px;color:var(--ink);line-height:1.75}
+.hooks{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
+.hook{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.hook b{font-family:'Geist Mono',monospace;font-size:14px;font-weight:600;display:block;margin-bottom:3px}
+.hook span{font-size:13.5px;color:var(--ink-2);line-height:1.35;display:block}
+.al{font-family:'Geist Mono',monospace;font-size:12.5px;fill:var(--muted)}
+</style></head><body><div class="chart"></div><div class="vignette"></div>
+<div class="page"><div class="hd"><span class="mk"></span><h1>Architecture</h1><p>The main session orchestrates. Typed subagents do the hands-on work. Hooks guard the edges.</p></div></div>
+
+<div class="b card" style="left:64px;top:170px;width:260px;height:260px">
+  <div class="k">you type</div><h3>Commands</h3>
+  <div class="cmds"><span class="chip a">/rumo …</span><span class="chip a">/learn</span><span class="chip a">/setup-repo</span><span class="chip">review <span style="color:var(--muted)">· model-invoked</span></span></div>
+</div>
+<div class="b card orch" style="left:380px;top:170px;width:740px;height:260px">
+  <div class="k">main session</div><h3>Orchestrator</h3>
+  <div class="row">
+    <div><b>reads first</b><code>CONTEXT.md</code>, ADRs, <code>docs/agents/lessons.md</code>, the issue</div>
+    <div><b>keeps inline</b>visual steps, judgment steps, the red loop of a hard bug</div>
+    <div><b>decides</b>assumptions in the plan; stops only on a critical question</div>
+    <div><b>accepts</b>each step by running its verify command — never by a builder's claim</div>
+  </div>
+</div>
+<div class="b card" style="left:1176px;top:170px;width:360px;height:120px">
+  <div class="k">via the gh CLI — no MCP</div><h3>GitHub</h3><p>Issues, sub-issues, blocking links, labels, PRs</p>
+</div>
+<div class="b card" style="left:1176px;top:310px;width:360px;height:120px">
+  <div class="k">one per issue</div><h3>git worktrees</h3><p>Plan lives in <code>.rumo/plan.md</code>, never committed</p>
+</div>
+<div class="b card" style="left:380px;top:484px;width:740px;height:236px">
+  <div class="k">agents/*.md — model pinned in frontmatter</div><h3>Typed subagents</h3>
+  <div class="tiers">
+    <div class="tier haiku"><div class="model">haiku</div><div class="n">scout<br>extractor<br>collector</div></div>
+    <div class="tier sonnet"><div class="model">sonnet</div><div class="n">builder<br>reviewer-sonnet</div></div>
+    <div class="tier opus"><div class="model">opus</div><div class="n">planner · builder-opus<br>reviewer<br>visual-judge</div></div>
+  </div>
+</div>
+<div class="b card" style="left:1176px;top:484px;width:360px;height:236px">
+  <div class="k">~/.claude/learn/</div><h3>Learning store</h3>
+  <p style="margin-top:8px"><code>events.jsonl</code> — revise, escalate, replan, findings</p>
+  <p style="margin-top:8px"><code>lessons.md</code> — repo and global, promoted by <code>/learn review</code></p>
+</div>
+<div class="b card" style="left:64px;top:484px;width:260px;height:236px">
+  <div class="k">10 discipline skills</div><h3>Disciplines</h3>
+  <p style="margin-top:8px">grilling · tdd · diagnosing-bugs · prototype · research · domain-modeling · codebase-design · merge conflicts · wizard · writing-for-agents</p>
+</div>
+<div class="b card" style="left:64px;top:762px;width:1472px;height:146px">
+  <div class="k">opt-in · installed by you into ~/.claude/hooks · intercept tool calls of every session</div>
+  <div class="hooks">
+    <div class="hook"><b>pr-base-guard</b><span>PR base, review stamp before PR/merge, deploy and prod-write gates</span></div>
+    <div class="hook"><b>worktree-guard</b><span>Builders in worktrees: no secret copies, no runaway test processes</span></div>
+    <div class="hook"><b>check-verify</b><span>Blocks "done" until a passing check ran after the last edit</span></div>
+    <div class="hook"><b>render-verify</b><span>Visual edits need desktop + phone screenshots, read</span></div>
+    <div class="hook"><b>context-nudge</b><span>Nudges once per context-size band, never blocks</span></div>
+  </div>
+</div>
+<svg class="wire" viewBox="0 0 1600 960">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker>
+  <marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="var(--petrol)"/></marker></defs>
+  <g stroke="var(--accent)" stroke-width="2.5" fill="none">
+    <path d="M326 300 H376" marker-end="url(#a)"/>
+    <path d="M1122 230 H1172" marker-end="url(#a)" marker-start="url(#a)"/>
+    <path d="M1122 370 H1172" marker-end="url(#a)"/>
+    <path d="M700 432 V480" marker-end="url(#a)"/>
+    <path d="M800 480 V432" marker-end="url(#a)"/>
+  </g>
+  <text x="690" y="462" text-anchor="end" class="al">brief</text><text x="810" y="462" class="al">evidence</text>
+  <g stroke="var(--petrol)" stroke-width="2" fill="none" stroke-dasharray="1 7" stroke-linecap="round">
+    <path d="M1122 602 H1172" marker-end="url(#p)"/>
+    <path d="M326 602 H376" marker-end="url(#p)"/>
+  </g>
+  <g stroke="var(--line)" stroke-width="2" fill="none" stroke-dasharray="4 5">
+    <path d="M200 722 V760"/><path d="M750 722 V760"/><path d="M1356 722 V760"/>
+  </g>
+</svg>
+<script src="common.js"></script></body></html>

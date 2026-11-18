@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="diagram.css">
+<style>
+:root{--w:1600px;--h:640px}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:56px;position:relative;margin-top:10px}
+.n{position:relative}
+.n .st{font-family:'Geist Mono',monospace;font-size:13px;color:var(--muted)}
+.n h3{margin:4px 0 8px}
+.n p{font-size:15.5px}
+.n .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.ret{margin-top:104px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ret .card{display:flex;gap:16px;align-items:flex-start}
+.ret .card .chip{margin-top:2px}
+.rule{font-size:22px;font-weight:600;letter-spacing:-.015em;margin-top:34px;color:var(--ink)}
+.rule span{color:var(--muted);font-weight:500}
+</style></head><body><div class="chart"></div><div class="vignette"></div>
+<div class="page">
+<div class="hd"><span class="mk"></span><h1>The learning loop</h1><p>Record cheap, promote on repetition, retire the rest.</p></div>
+<div class="row">
+  <div class="card n"><div class="st">01 · during every build</div><h3>Events</h3><p>Every revise, escalate, replan and review finding is logged through <code>learn.py event</code>.</p><div class="chips"><span class="chip">events.jsonl</span></div></div>
+  <div class="card n"><div class="st">02 · end of a session</div><h3>Harvest</h3><p>Corrections, hook blocks and failed steps become candidate lessons — one imperative rule each. You approve what's written.</p><div class="chips"><span class="chip p">/learn</span><span class="chip p">/learn &lt;text&gt;</span></div></div>
+  <div class="card n"><div class="st">03 · seen in 2+ sessions</div><h3>Promote</h3><p>A repeat moves to where it changes behaviour, as a numbered diff you approve.</p><div class="chips"><span class="chip p">/learn review</span></div></div>
+  <div class="card n" style="border-color:color-mix(in srgb,var(--accent) 45%,var(--line))"><div class="st">04 · next build</div><h3>Rules in force</h3><p>An agent body, a rumo reference, the repo's <code>lessons.md</code> the planner quotes, <code>CLAUDE.md</code> — or a new hook.</p></div>
+  <svg class="wire" viewBox="0 0 1472 300" preserveAspectRatio="none" style="height:100%">
+    <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker>
+    <marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="var(--petrol)"/></marker></defs>
+  </svg>
+</div>
+<svg class="wire" viewBox="0 0 1600 760">
+  <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="var(--accent)"/></marker>
+  <marker id="p2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="var(--petrol)"/></marker></defs>
+  <g stroke="var(--accent)" stroke-width="2.5" fill="none">
+    <path d="M394 250 H442" marker-end="url(#a2)"/><path d="M776 250 H824" marker-end="url(#a2)"/><path d="M1158 250 H1206" marker-end="url(#a2)"/>
+  </g>
+  <path d="M1373 372 V400 Q1373 418 1355 418 H245 Q227 418 227 400 V376" stroke="var(--petrol)" stroke-width="2" fill="none" stroke-dasharray="1 8" stroke-linecap="round" marker-end="url(#p2)"/>
+  <rect x="690" y="404" width="220" height="28" rx="8" fill="var(--paper)"/>
+  <text x="800" y="424" text-anchor="middle" style="font:500 15px 'Geist Mono',monospace;fill:var(--petrol)">fewer repeats next time</text>
+</svg>
+<div class="ret">
+  <div class="card"><span class="chip">retire</span><p>One-off lessons older than 60 days move to <code>lessons-archive.md</code>. Instruction files stay within byte budgets.</p></div>
+  <div class="card"><span class="chip">calibrate</span><p><code>/learn review</code> reads builder outcomes per category and sharpens the planner's sonnet-vs-opus Model rule.</p></div>
+</div>
+</div>
+<script src="common.js"></script></body></html>

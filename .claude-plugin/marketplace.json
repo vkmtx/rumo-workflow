@@ -1,0 +1,8 @@
+{
+  "name": "rumo",
+  "description": "Marketplace for rumo, an idea-to-merged-PR engineering workflow for Claude Code",
+  "owner": { "name": "vkmtx" },
+  "plugins": [
+    { "name": "rumo", "source": "./", "description": "Idea-to-merged-PR workflow: /rumo orchestration, a tiered review gate and discipline skills" }
+  ]
+}

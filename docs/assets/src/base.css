@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=block');
+:root{
+  --paper:#f4efe6; --paper-2:#ebe4d7; --card:#fbf8f2; --ink:#121110; --ink-2:#4a443d; --muted:#857c70;
+  --line:#d9d0c1; --accent:#d9481c; --accent-soft:#f6d9cb; --petrol:#1f4f5c; --petrol-soft:#d5e2e2;
+  --grid:rgba(18,17,16,.07); --grid-strong:rgba(18,17,16,.13);
+}
+body.dark{
+  --paper:#121110; --paper-2:#1b1917; --card:#1d1b18; --ink:#f4efe6; --ink-2:#c9c0b2; --muted:#8d8478;
+  --line:#34302b; --accent:#ff6a3d; --accent-soft:#3a2219; --petrol:#7fb3bd; --petrol-soft:#1d2b2e;
+  --grid:rgba(244,239,230,.05); --grid-strong:rgba(244,239,230,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:var(--w);height:var(--h);overflow:hidden}
+body{background:var(--paper);color:var(--ink);font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;position:relative}
+.mono{font-family:'Geist Mono',ui-monospace,monospace}
+/* nautical chart: fine grid + stronger every 4th + grain */
+.chart{position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--grid-strong) 1px,transparent 1px),linear-gradient(90deg,var(--grid-strong) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:160px 160px,160px 160px,40px 40px,40px 40px;background-position:-1px -1px}
+.chart::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0 0.06 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.dark .chart::after{mix-blend-mode:screen;opacity:.18}
+.vignette{position:absolute;inset:0;background:radial-gradient(1200px 600px at 85% 20%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 60%),radial-gradient(900px 500px at 0% 100%,color-mix(in srgb,var(--petrol) 10%,transparent),transparent 60%)}

@@ -1,0 +1,8 @@
+# Fixed strings that scripts/leak-scan.sh must not flag: obvious fake test fixtures and the
+# standard SSH user of a git forge, and byte noise inside committed PNGs that the binary scan reads.
+# One exact string per line; add nothing that could be real.
+sk-abcdefghijklmnopqrstuv
+pw@db.x.com
+x@github.com
+git@github.com
+%@O.Ul

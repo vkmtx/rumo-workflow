@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="diagram.css">
+<style>
+:root{--w:1600px;--h:880px}
+.cols{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:20px}
+.col>.model{font-size:15px;margin:0 0 12px 4px}
+.col>.model small{font-weight:400;color:var(--muted);margin-left:6px}
+.stack{display:grid;gap:12px}
+.ag{padding:16px 18px;border-left:4px solid var(--m)}
+.ag .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.ag h3{font-family:'Geist Mono',monospace;font-size:18px;font-weight:600;letter-spacing:0}
+.ag .meta{font-family:'Geist Mono',monospace;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.ag p{margin-top:6px;font-size:15px}
+.ag .tools{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px}
+.ag .tools span{font-family:'Geist Mono',monospace;font-size:11.5px;padding:2px 7px;border-radius:6px;background:var(--paper-2);color:var(--ink-2)}
+.rule{margin-top:20px;display:flex;gap:14px;align-items:center;font-size:16px;color:var(--ink-2)}
+</style></head><body><div class="chart"></div><div class="vignette"></div>
+<div class="page">
+<div class="hd"><span class="mk"></span><h1>Typed subagents</h1><p>Nine agents, each pinned to a model and effort in its own frontmatter.</p></div>
+<div class="cols">
+ <div class="col haiku"><div class="model">haiku<small>extraction · no judgment</small></div><div class="stack">
+  <div class="card ag haiku"><div class="top"><h3>scout</h3><span class="meta">25 turns</span></div><p>Read-only codebase facts, answered with <code>path:line</code> evidence.</p><div class="tools"><span>Read</span><span>Grep</span><span>Glob</span><span>Bash</span></div></div>
+  <div class="card ag haiku"><div class="top"><h3>extractor</h3><span class="meta">25 turns</span></div><p>Reads bulk — logs, transcripts, JSON, CI output — and returns only the named fields.</p><div class="tools"><span>Read</span><span>Grep</span><span>Glob</span><span>Bash</span></div></div>
+  <div class="card ag haiku"><div class="top"><h3>collector</h3><span class="meta">25 turns</span></div><p>Web search and pages, each row with its URL. No shell, so page content can't become a command.</p><div class="tools"><span>WebSearch</span><span>WebFetch</span></div></div>
+ </div></div>
+ <div class="col sonnet"><div class="model">sonnet<small>build from a precise spec</small></div><div class="stack">
+  <div class="card ag sonnet"><div class="top"><h3>builder</h3><span class="meta">high · 60 turns</span></div><p>Executes exactly one typed plan step, or one WORKTREE · TASK · FILES · VERIFY brief — test-first, reports evidence.</p><div class="tools"><span>Read</span><span>Edit</span><span>Write</span><span>Bash</span><span>context7</span></div></div>
+  <div class="card ag sonnet"><div class="top"><h3>reviewer-sonnet</h3><span class="meta">high · 50 turns</span></div><p>Fix re-reviews outside the sensitive tier, from a clean context on fixed SHAs.</p><div class="tools"><span>Read</span><span>Grep</span><span>Glob</span><span>Bash</span></div></div>
+ </div></div>
+ <div class="col opus"><div class="model">opus<small>plan · risk · judge</small></div><div class="stack">
+  <div class="card ag opus"><div class="top"><h3>planner</h3><span class="meta">high · 35 turns</span></div><p>Reads issue, repo, CONTEXT.md, ADRs and lessons; writes typed steps and marks each step's model.</p><div class="tools"><span>Read</span><span>Grep</span><span>Glob</span><span>Bash</span><span>Write</span><span>WebFetch</span><span>context7</span></div></div>
+  <div class="card ag opus"><div class="top"><h3>builder-opus</h3><span class="meta">medium · 60 turns</span></div><p>Risky or under-specified steps, and any step a sonnet builder failed — never retried on sonnet.</p><div class="tools"><span>Read</span><span>Edit</span><span>Write</span><span>Bash</span><span>context7</span></div></div>
+  <div class="card ag opus"><div class="top"><h3>reviewer</h3><span class="meta">high · 50 turns</span></div><p>One axis per run — bugs, standards, spec, security — returning proven findings.</p><div class="tools"><span>Read</span><span>Grep</span><span>Glob</span><span>Bash</span></div></div>
+  <div class="card ag opus"><div class="top"><h3>visual-judge</h3><span class="meta">high · 15 turns</span></div><p>Sees only screenshots, the design contract and the visual brief — never the builder's reasoning.</p><div class="tools"><span>Read</span><span>Glob</span></div></div>
+ </div></div>
+</div>
+</div>
+<div class="foot"><span>dispatched by subagent_type with no model param — a param would override the pin</span><span>agents/*.md</span></div>
+<script src="common.js"></script></body></html>
